@@ -43,3 +43,5 @@ class BoardListCreate(generics.ListCreateAPIView):
 class BoardRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
+
+print("hello")
