@@ -29,7 +29,7 @@ class GetNewsView(APIView):
             if rescode == 200:
                 response_body = response.read()
                 data = response_body.decode('utf-8')
-                return JsonResponse(data, safe=False, status=status.HTTP_200_OK)
+                return JsonResponse(data['title'], safe=False, status=status.HTTP_200_OK)
             else:
                 return Response({"error": f"Error Code: {rescode}"}, status=rescode)
         except Exception as e:
