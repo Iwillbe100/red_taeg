@@ -4,4 +4,6 @@ from . import views
 urlpatterns = [
     path('boards/', views.BoardListCreate.as_view(), name='board-list-create'),
     path('boards/<int:pk>/', views.BoardRetrieveUpdateDestroy.as_view(), name='board-detail'),
+
+    path('get-news/', views.GetNewsView.as_view(), name='get-news'),
 ]
