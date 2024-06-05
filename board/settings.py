@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-@1*0ghb9dvu27fkrw_d57@eah464*+%nde4aq(ju+r51+kz_rr'
 
+NAVER_CLIENT_ID = "BOYYAlCr96E4XDvRAL9h"
+NAVER_CLIENT_SECRET = "Ue59PNlPKs"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
