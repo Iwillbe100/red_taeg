@@ -12,6 +12,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+
+
 class GetNewsView(APIView):
     def get(self, request, *args, **kwargs):
         encText = urllib.parse.quote("갈등")
@@ -28,13 +30,24 @@ class GetNewsView(APIView):
             rescode = response.getcode()
             if rescode == 200:
                 response_body = response.read()
-                data = response_body.decode('utf-8')
-                print(data, "DATA@@@")
-                return JsonResponse(data, safe=False, status=status.HTTP_200_OK)
+                data = json.loads(response_body.decode('utf-8'))
+                
+                # 필요한 필드만 추출
+                news_list = [
+                    {
+                        "title": item["title"],
+                        "description": item["description"]
+                    }
+                    for item in data.get("items", [])
+                ]
+                
+                return JsonResponse(news_list, safe=False, status=status.HTTP_200_OK)
             else:
                 return Response({"error": f"Error Code: {rescode}"}, status=rescode)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 
 
 class BoardListCreate(generics.ListCreateAPIView):
